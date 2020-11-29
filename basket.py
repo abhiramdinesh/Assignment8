@@ -1,7 +1,9 @@
 DEFAULT_INITIAL_BASKET = ["orange", "apple"]
 
 def create_picnic_basket(healthy, hungry, initial_basket=DEFAULT_INITIAL_BASKET):
-    basket = initial_basket
+    # Bugfix - Appending to basket will modify the DEFAULT_INITIAL_BASKET as they are both pointing to the same object.
+    # Assign a copy of initial_basket to basket. This creates a new object.
+    basket = initial_basket.copy()
     if healthy:
         basket.append("strawberry")
     else:
